@@ -1,0 +1,61 @@
+/*
+ * theme.css —— 主题令牌
+ *
+ * 配色取自 VS Code「Dark Modern」暗色主题，也就是 vscode.dev 的默认外观：
+ *   editor.background                            #1f1f1f
+ *   sideBar / activityBar / titleBar / statusBar #181818
+ *   panel.border 等分隔线                        #2b2b2b
+ *   activityBar 图标                              #d7d7d7(选中) / #868686(未选中)
+ *   focusBorder / 按钮                            #0078d4
+ *   textLink.foreground                           #4daafc
+ */
+:root {
+  /* ---- 背景 ---- */
+  --bg-editor: #1f1f1f;
+  --bg-chrome: #181818;      /* 标题栏 / 活动栏 / 侧边栏 / 状态栏 */
+  --bg-tabbar: #181818;
+  --bg-banner: #04395e;
+  --bg-card: #2b2b2b;
+  --bg-command-center: #242424;
+
+  /* ---- 前景 ---- */
+  --fg: #cccccc;
+  --fg-strong: #ffffff;
+  --fg-muted: #9d9d9d;
+  --fg-icon: #868686;
+  --fg-icon-active: #d7d7d7;
+
+  /* ---- 线条与强调色 ---- */
+  --border: #2b2b2b;
+  --border-strong: #454545;
+  --accent: #0078d4;
+  --accent-hover: #026ec1;
+  --link: #4daafc;
+  --hover: #ffffff14;
+  --hover-strong: #ffffff1f;
+
+  /* ---- 尺寸（按参考图实测比例换算） ---- */
+  --h-banner: 26px;
+  --h-titlebar: 35px;
+  --h-tabbar: 35px;
+  --h-statusbar: 22px;
+  --w-activity: 48px;
+  --h-activity-item: 48px;
+  --h-sidebar-header: 35px;
+  --w-command-center: 613px;
+
+  /* 侧边栏宽度：默认 / 最小 / 收起阈值 */
+  --w-sidebar: 380px;
+  --w-sidebar-min: 170px;
+  --w-sidebar-collapse: 120px;
+  --w-sash: 5px;
+
+  /* ---- 字体 ---- */
+  --font-ui: "Segoe UI", "Microsoft YaHei", system-ui, -apple-system, "PingFang SC", sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", "Courier New", monospace;
+
+  /* ---- 圆角 ---- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+}

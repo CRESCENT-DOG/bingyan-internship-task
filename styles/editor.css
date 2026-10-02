@@ -1,0 +1,431 @@
+/* editor.css —— 编辑器区域：标签页、欢迎页、卡片、底部提示、浮动按钮 */
+
+.editor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  background-color: var(--bg-editor);
+}
+
+/* ================= 标签页 ================= */
+.tabs {
+  display: flex;
+  align-items: stretch;
+  flex: none;
+  height: var(--h-tabbar);
+  padding-left: 10px;
+  background-color: var(--bg-tabbar);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  min-width: 112px;
+  padding: 0 6px 0 9px;
+  border-right: 1px solid var(--border);
+  background-color: var(--bg-editor);
+  color: var(--fg);
+  font-size: 13px;
+}
+
+.tab.is-active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.tab__icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: #0078d4;
+}
+
+.tab__label {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tab__close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-md);
+  color: var(--fg);
+  opacity: 0;
+}
+
+.tab:hover .tab__close,
+.tab.is-active .tab__close,
+.tab__close:focus-visible {
+  opacity: 1;
+}
+
+.tab__close:hover {
+  background-color: var(--hover-strong);
+}
+
+.tab__close .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.tabs__spacer {
+  flex: 1 1 auto;
+}
+
+.tab-action {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  color: var(--fg);
+}
+
+.tab-action:hover {
+  background-color: var(--hover-strong);
+}
+
+.tab-action .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ================= 欢迎页 ================= */
+.editor__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.welcome {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 98px;
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 1088px;
+  margin: 0 auto;
+  padding: 126px 24px 40px;
+}
+
+.welcome__header {
+  grid-column: 1 / -1;
+}
+
+.welcome__title {
+  color: var(--fg);
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.welcome__subtitle {
+  margin-bottom: 8px;
+  color: var(--fg-muted);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.welcome__section {
+  margin: 16px 0 8px;
+  color: var(--fg);
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* ---- 启动列表 ---- */
+.welcome__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 31px;
+  color: var(--link);
+  font-size: 13px;
+}
+
+.welcome__link:hover span {
+  text-decoration: underline;
+}
+
+.welcome__link .icon {
+  width: 17px;
+  height: 17px;
+  color: var(--link);
+}
+
+/* ---- 最近列表 ---- */
+.welcome__recent {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__recent-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  font-size: 13px;
+}
+
+.welcome__recent-link > span:first-child {
+  color: var(--link);
+}
+
+.welcome__recent-link:hover > span:first-child {
+  text-decoration: underline;
+}
+
+.welcome__recent-path {
+  color: var(--fg);
+}
+
+/* ================= 演练卡片 ================= */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 6px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+  padding: 7px 12px 7px 8px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-card);
+  overflow: hidden;
+}
+
+.card:hover {
+  background-color: #333333;
+}
+
+.card--ribbon {
+  align-items: flex-start;
+  min-height: 62px;
+  padding: 10px 12px 10px 8px;
+}
+
+.card__ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: start;
+  padding: 3px 0 0 3px;
+  background-color: var(--accent);
+  border-top-left-radius: var(--radius-lg);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  color: #ffffff;
+}
+
+.card__ribbon .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.card__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.card__icon .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.card__icon--plain {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.card__icon--plain .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.card__text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.card--ribbon .card__text {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding-left: 25px;
+}
+
+.card__title {
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.card__description {
+  margin-top: 4px;
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.badge {
+  align-self: center;
+  padding: 1px 6px;
+  border-radius: var(--radius-md);
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+/* ================= 底部提示 ================= */
+.welcome-footer {
+  flex: none;
+  padding: 0 24px 12px;
+  text-align: center;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.checkbox__box {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  background-color: transparent;
+  color: transparent;
+}
+
+.checkbox__input:checked + .checkbox__box {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.checkbox__box .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.checkbox__label {
+  color: var(--fg);
+  font-size: 13px;
+}
+
+.welcome-footer__note {
+  margin-top: 2px;
+  color: var(--fg);
+  font-size: 12px;
+}
+
+.welcome-footer__note a {
+  color: var(--link);
+}
+
+.welcome-footer__note a:hover {
+  text-decoration: underline;
+}
+
+/* ================= 右下角浮动按钮 ================= */
+.editor-floats {
+  position: absolute;
+  right: 0;
+  bottom: 122px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.float-button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding-right: 6px;
+  border-radius: 20px 0 0 20px;
+  background-color: #2a2a2a;
+  color: var(--fg);
+}
+
+.float-button:hover {
+  background-color: #3a3a3a;
+}
+
+.float-button .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.copilot-mark {
+  width: 30px;
+  height: 30px;
+  flex: none;
+}
+
+/* ================= 响应式 ================= */
+@media (max-width: 900px) {
+  .welcome {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+    padding: 64px 24px 40px;
+  }
+
+  .command-center {
+    max-width: 60%;
+  }
+}

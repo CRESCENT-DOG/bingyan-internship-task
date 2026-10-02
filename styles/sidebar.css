@@ -1,0 +1,253 @@
+/* sidebar.css —— 活动栏（功能选择区）、侧边栏（功能展示区）、拖拽条 */
+
+/* ================= 活动栏 ================= */
+.activity-bar {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: var(--w-activity);
+  background-color: var(--bg-chrome);
+  user-select: none;
+}
+
+.activity-bar__spacer {
+  flex: 1 1 auto;
+}
+
+.activity-item {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 100%;
+  height: var(--h-activity-item);
+  color: var(--fg-icon);
+}
+
+.activity-item .icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 最上面的汉堡菜单图标比其他图标略小 */
+.activity-item--menu .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.activity-item:hover {
+  color: var(--fg-icon-active);
+}
+
+.activity-item.is-active {
+  color: var(--fg-icon-active);
+}
+
+/* ================= 侧边栏 ================= */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: var(--w-sidebar);
+  min-width: 0;
+  overflow: hidden;
+  background-color: var(--bg-chrome);
+  color: var(--fg);
+  border-left: 1px solid var(--border);
+  user-select: none;
+}
+
+/* 拖到阈值以下时给出“即将关闭”的反馈 */
+.sidebar.is-will-close {
+  opacity: 0.45;
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  height: var(--h-sidebar-header);
+  padding-left: 21px;
+  padding-right: 4px;
+}
+
+.sidebar__title {
+  overflow: hidden;
+  color: var(--fg);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-md);
+  color: var(--fg);
+}
+
+.icon-button:hover {
+  background-color: var(--hover-strong);
+}
+
+.sidebar__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden auto;
+}
+
+/* ================= 面板 ================= */
+.panel {
+  display: none;
+}
+
+.panel.is-active {
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding-left: 2px;
+  color: var(--fg);
+}
+
+.section-header__chevron {
+  width: 16px;
+  height: 16px;
+}
+
+.section-header__title {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.welcome-view {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 10.5% 0;
+}
+
+.welcome-view__message {
+  margin-bottom: 14px;
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.view-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10.5%;
+}
+
+.panel > .welcome-view__message {
+  padding: 12px 10.5% 0;
+  margin-bottom: 0;
+}
+
+/* VS Code 风格的实心按钮 */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent);
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.button:hover {
+  background-color: var(--accent-hover);
+}
+
+.button:last-child {
+  margin-bottom: 0;
+}
+
+.input {
+  height: 26px;
+  padding: 0 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-command-center);
+  color: var(--fg);
+  font-size: 12px;
+}
+
+.input::placeholder {
+  color: var(--fg-muted);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* ================= 侧边栏底部的折叠区 ================= */
+.sidebar__bottom {
+  flex: none;
+  border-top: 1px solid var(--border);
+}
+
+.collapsed-section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  height: 22px;
+  padding-left: 5px;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 12px;
+}
+
+.collapsed-section:hover {
+  background-color: var(--hover);
+}
+
+.collapsed-section .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ================= 拖拽条 ================= */
+.sash {
+  position: relative;
+  flex: none;
+  width: var(--w-sash);
+  margin-left: calc(var(--w-sash) / -2 + 1px);
+  margin-right: calc(var(--w-sash) / -2 + 1px);
+  background-color: transparent;
+  cursor: col-resize;
+  z-index: 5;
+}
+
+/* 命中区域比视觉宽度略宽，方便抓取 */
+.sash::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -3px;
+  right: -3px;
+}
+
+.sash:hover,
+.sash.is-active {
+  background-color: var(--accent);
+}
+
+/* ================= 收起状态 ================= */
+.app.is-sidebar-collapsed .sidebar,
+.app.is-sidebar-collapsed .sash {
+  display: none;
+}

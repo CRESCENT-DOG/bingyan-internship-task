@@ -1,0 +1,211 @@
+/* layout.css —— 整体骨架：提示条 / 标题栏 / 工作区 / 状态栏 */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ================= 顶部提示条 ================= */
+.banner {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: var(--h-banner);
+  padding: 0 12px;
+  background-color: var(--bg-banner);
+  color: #ffffff;
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.banner__logo {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: #0086d1;
+}
+
+.banner__text {
+  margin-left: 8px;
+}
+
+.banner__links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: 28px;
+}
+
+.banner__links a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ================= 标题栏 ================= */
+.titlebar {
+  display: flex;
+  align-items: center;
+  flex: none;
+  height: var(--h-titlebar);
+  background-color: var(--bg-chrome);
+  border-bottom: 1px solid var(--border);
+  user-select: none;
+}
+
+.titlebar__logo {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 38px;
+  height: 100%;
+  color: #0078d4;
+}
+
+.titlebar__logo svg {
+  width: 17px;
+  height: 17px;
+}
+
+.titlebar__center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.nav-button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 26px;
+  height: 24px;
+  border-radius: var(--radius-md);
+  color: var(--fg);
+}
+
+.nav-button:hover {
+  background-color: var(--hover-strong);
+}
+
+.nav-button .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.command-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: var(--w-command-center);
+  max-width: 44%;
+  height: 24px;
+  margin-left: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background-color: var(--bg-command-center);
+  color: var(--fg);
+  font-size: 13px;
+}
+
+.command-center:hover {
+  border-color: #6f6f6f;
+}
+
+.command-center .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.titlebar__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+  padding-right: 6px;
+}
+
+.titlebar-button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 24px;
+  border-radius: var(--radius-md);
+  color: var(--fg-icon);
+}
+
+.titlebar-button .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.titlebar-button:hover {
+  background-color: var(--hover-strong);
+  color: var(--fg-icon-active);
+}
+
+.titlebar-button.is-active {
+  color: var(--fg-icon-active);
+}
+
+/* ================= 工作区 ================= */
+.workbench {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ================= 状态栏 ================= */
+.statusbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex: none;
+  height: var(--h-statusbar);
+  background-color: var(--bg-chrome);
+  border-top: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 12px;
+  user-select: none;
+}
+
+.statusbar__group {
+  display: flex;
+  align-items: stretch;
+}
+
+.statusbar__remote {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.statusbar__remote .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.statusbar__item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 5px;
+}
+
+.statusbar__item:hover {
+  background-color: var(--hover-strong);
+}
+
+.statusbar__item .icon {
+  width: 13px;
+  height: 13px;
+}
