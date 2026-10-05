@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visual Studio Code — 欢迎</title>
+
+  <link rel="stylesheet" href="styles/theme.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/sidebar.css" />
+  <link rel="stylesheet" href="styles/editor.css" />
+  <link rel="stylesheet" href="styles/explorer.css" />
+  <link rel="stylesheet" href="styles/editor-tabs.css" />
+</head>
+<body>
+  <!-- 图标全部为内联 SVG 雪碧图：不依赖图标库 / 字体，也不发额外请求 -->
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="grad-copilot" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#a855f7" />
+        <stop offset="0.5" stop-color="#4f46e5" />
+        <stop offset="1" stop-color="#22d3ee" />
+      </linearGradient>
+    </defs>
+    <symbol id="i-vscode" viewBox="0 0 256 256">
+      <path fill="currentColor" d="M180.9 0 89.6 87.3 33.6 44.5 0 61.9l47.6 66.1L0 194.1l33.6 17.4 56-42.8L180.9 256l75.1-36.3V36.3zm0 61.9v132.2L104 128z" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+        <path d="M3.5 6.5h17M3.5 12h17M3.5 17.5h17" />
+      </g>
+    </symbol>
+    <symbol id="i-files" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+        <path d="M15.5 6.5h-4.6l-1.4-1.6H8.2a1.2 1.2 0 0 0-1.2 1.2v12.8a1.2 1.2 0 0 0 1.2 1.2h7.3a1.2 1.2 0 0 0 1.2-1.2V7.7a1.2 1.2 0 0 0-1.2-1.2z" />
+        <path d="M4.6 16.1a1.2 1.2 0 0 1-1.2-1.2V4.2a1.2 1.2 0 0 1 1.2-1.2h7.1l1.4 1.6h2.4" />
+      </g>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <circle cx="10.7" cy="10.7" r="6.2" />
+        <path d="M15.4 15.4 20.5 20.5" />
+      </g>
+    </symbol>
+    <symbol id="i-source-control" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <circle cx="7.5" cy="6" r="2.2" />
+        <circle cx="7.5" cy="18" r="2.2" />
+        <circle cx="16.5" cy="9.5" r="2.2" />
+        <path d="M7.5 8.2v7.6" />
+        <path d="M14.7 10.2c-1.6.3-3.1 1.4-3.7 2.7-.5 1-1.3 1.8-2.3 2.1" />
+      </g>
+    </symbol>
+    <symbol id="i-run" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.2 7.4 18.6 12l-8.4 4.6z" />
+        <circle cx="5.6" cy="9.6" r="3" />
+        <path d="M3.9 8.3h3.4M5.6 6.6v6M4 12.3l3.2-3.4M7.2 12.3 4 8.9" />
+      </g>
+    </symbol>
+    <symbol id="i-remote" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.4" y="4.6" width="12.4" height="9.6" rx="1.6" />
+        <path d="M3.4 17.2h4.2M13.6 17.2h7" />
+        <circle cx="17.6" cy="16.4" r="3.1" />
+        <path d="M16.4 16.4h2.4" />
+      </g>
+    </symbol>
+    <symbol id="i-extensions" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="3.6" y="3.6" width="6.6" height="6.6" rx="1.2" />
+        <rect x="13.8" y="3.6" width="6.6" height="6.6" rx="1.2" />
+        <rect x="3.6" y="13.8" width="6.6" height="6.6" rx="1.2" />
+      </g>
+      <path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M16.9 14.1 20.6 17l-3.7 3.4z" />
+    </symbol>
+    <symbol id="i-account" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <circle cx="12" cy="12" r="8.4" />
+        <circle cx="12" cy="10" r="2.6" />
+        <path d="M6.7 18.6a6.3 6.3 0 0 1 10.6 0" />
+      </g>
+    </symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="2.9" />
+        <path d="M19.1 14.2a1.6 1.6 0 0 0 .32 1.77l.06.06a1.94 1.94 0 1 1-2.75 2.75l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-.97 1.47v.17a1.94 1.94 0 1 1-3.88 0v-.09a1.6 1.6 0 0 0-1.05-1.47 1.6 1.6 0 0 0-1.77.32l-.06.06a1.94 1.94 0 1 1-2.75-2.75l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-.97H3a1.94 1.94 0 1 1 0-3.88h.09a1.6 1.6 0 0 0 1.47-1.05 1.6 1.6 0 0 0-.32-1.77l-.06-.06a1.94 1.94 0 1 1 2.75-2.75l.06.06a1.6 1.6 0 0 0 1.77.32h.08a1.6 1.6 0 0 0 .97-1.47V3a1.94 1.94 0 1 1 3.88 0v.09a1.6 1.6 0 0 0 .97 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a1.94 1.94 0 1 1 2.75 2.75l-.06.06a1.6 1.6 0 0 0-.32 1.77v.08a1.6 1.6 0 0 0 1.47.97H21a1.94 1.94 0 1 1 0 3.88h-.09a1.6 1.6 0 0 0-1.47.97z" />
+      </g>
+    </symbol>
+    <symbol id="i-chevron-left" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 6.5 8.5 12 14 17.5" />
+      </g>
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 6.5 15.5 12 10 17.5" />
+      </g>
+    </symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.5 9.5 12 15l5.5-5.5" />
+      </g>
+    </symbol>
+    <symbol id="i-more" viewBox="0 0 24 24">
+      <g fill="currentColor">
+        <circle cx="5.6" cy="12" r="1.5" />
+        <circle cx="12" cy="12" r="1.5" />
+        <circle cx="18.4" cy="12" r="1.5" />
+      </g>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M6.8 6.8l10.4 10.4M17.2 6.8 6.8 17.2" />
+      </g>
+    </symbol>
+    <symbol id="i-new-file" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M13.4 3.8H8.4a1.7 1.7 0 0 0-1.7 1.7v12.9a1.7 1.7 0 0 0 1.7 1.7h7.2a1.7 1.7 0 0 0 1.7-1.7V7.6z" />
+        <path d="M13.2 4v3.4h3.4" />
+      </g>
+    </symbol>
+    <symbol id="i-file-open" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.2 18.4V5.6a1.6 1.6 0 0 1 1.6-1.6h4.6l1.5 1.8h6.3a1.6 1.6 0 0 1 1.6 1.6v2.4" />
+        <path d="M10.6 15.6H20l-2.1 4.6H4.2" />
+      </g>
+    </symbol>
+    <symbol id="i-folder-opened" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <path d="M3.4 6.9A1.6 1.6 0 0 1 5 5.3h3l1.7 2.1h7.3a1.6 1.6 0 0 1 1.6 1.6v1.1" />
+        <path d="M3.4 8.9h15.1l1.7 8.9H5.1z" />
+      </g>
+    </symbol>
+    <symbol id="i-tunnel" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 5.8 11 12l-6.5 6.2" />
+        <path d="M19.3 5.8 12.8 12l6.5 6.2" />
+      </g>
+    </symbol>
+    <symbol id="i-repo" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <circle cx="7.6" cy="6.4" r="2.1" />
+        <circle cx="7.6" cy="17.6" r="2.1" />
+        <circle cx="16.4" cy="9.6" r="2.1" />
+        <path d="M7.6 8.5v7" />
+        <path d="M14.6 10.3c-1.5.3-2.9 1.3-3.4 2.5-.4.9-1.2 1.6-2.1 1.9" />
+      </g>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 3.6l2.6 5.3 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.9z" />
+    </symbol>
+    <symbol id="i-lightbulb" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2.6a6.4 6.4 0 0 0-3.6 11.7c.6.4.9 1 .9 1.6v.3h5.4v-.3c0-.6.3-1.2.9-1.6A6.4 6.4 0 0 0 12 2.6z" />
+      <path fill="currentColor" d="M9.6 17.6h4.8v1.1a1.4 1.4 0 0 1-1.4 1.4h-2a1.4 1.4 0 0 1-1.4-1.4z" />
+    </symbol>
+    <symbol id="i-error" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <circle cx="12" cy="12" r="8.2" />
+        <path d="M9 9l6 6M15 9l-6 6" />
+      </g>
+    </symbol>
+    <symbol id="i-warning" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3.8 21 19.6H3z" />
+        <path d="M12 9.4v4.3M12 16.6v.1" />
+      </g>
+    </symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6.3 16.4V11a5.7 5.7 0 1 1 11.4 0v5.4l1.4 1.9H4.9z" />
+        <path d="M10 20.3a2.3 2.3 0 0 0 4 0" />
+      </g>
+    </symbol>
+    <symbol id="i-layout-customize" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="4" y="4" width="16" height="16" rx="1.6" />
+        <rect x="6.6" y="6.6" width="4.4" height="4.4" rx="0.8" />
+        <rect x="13" y="6.6" width="4.4" height="4.4" rx="0.8" />
+        <rect x="6.6" y="13" width="4.4" height="4.4" rx="0.8" />
+      </g>
+    </symbol>
+    <symbol id="i-layout-sidebar" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="3.6" y="4.6" width="16.8" height="14.8" rx="1.8" />
+        <path d="M9.6 4.6v14.8" />
+      </g>
+      <path fill="currentColor" d="M3.6 6.4a1.8 1.8 0 0 1 1.8-1.8h4.2v14.8H5.4a1.8 1.8 0 0 1-1.8-1.8z" />
+    </symbol>
+    <symbol id="i-layout-panel" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="3.6" y="4.6" width="16.8" height="14.8" rx="1.8" />
+        <path d="M3.6 14.4h16.8" />
+      </g>
+    </symbol>
+    <symbol id="i-layout-split" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="3.6" y="4.6" width="16.8" height="14.8" rx="1.8" />
+        <path d="M12 4.6v14.8" />
+      </g>
+      <path fill="currentColor" d="M12 4.6h6.6a1.8 1.8 0 0 1 1.8 1.8v11.2a1.8 1.8 0 0 1-1.8 1.8H12z" />
+    </symbol>
+    <symbol id="i-split-editor" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
+        <rect x="3.8" y="5" width="16.4" height="14" rx="1.6" />
+        <path d="M12 5v14" />
+      </g>
+      <path fill="currentColor" d="M3.8 6.6A1.6 1.6 0 0 1 5.4 5H12v14H5.4a1.6 1.6 0 0 1-1.6-1.6z" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 12.6 9.6 17.8 19.5 6.6" />
+      </g>
+    </symbol>
+    <symbol id="i-remote-indicator" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10.5 6.5 15.5 12l-5 5.5" />
+        <path d="M15.5 6.5 20.5 12l-5 5.5" />
+      </g>
+    </symbol>
+    <symbol id="i-copilot" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="13" fill="#ffffff" stroke="url(#grad-copilot)" stroke-width="4" />
+      <path d="M12.6 11.4v9.2" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+      <path d="M21 11.8 16.8 16l4.2 4.2" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3.2 5.4h6.1l1.8 2h9.7v11.2H3.2z" />
+    </symbol>
+    <symbol id="i-file" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round">
+        <path d="M6.5 3.2h7.2l4.3 4.3v13.3H6.5z" />
+        <path d="M13.7 3.2v4.3h4.3" />
+      </g>
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <path d="M19.5 12a7.5 7.5 0 1 1-2.4-5.5" />
+        <path d="M19.5 4.5V9H15" />
+      </g>
+    </symbol>
+    <symbol id="i-collapse-all" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 6.5h16M4 12h16" />
+        <path d="m9 17 3-3 3 3" />
+      </g>
+    </symbol>
+  </svg>
+
+  <div class="app" id="app">
+    <!-- ============ 顶部提示条（vscode.dev 的 Preview 横幅） ============ -->
+    <div class="banner">
+      <svg class="banner__logo" aria-hidden="true"><use href="#i-vscode" /></svg>
+      <span class="banner__text">Visual Studio Code (Preview). Anywhere, anytime, entirely in your browser.</span>
+      <nav class="banner__links">
+        <a href="#">Read the Documentation</a>
+        <a href="#">Privacy &amp; Cookies</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Download VS Code</a>
+      </nav>
+    </div>
+
+    <!-- ============ 标题栏 ============ -->
+    <header class="titlebar">
+      <a class="titlebar__logo" href="#" aria-label="Visual Studio Code">
+        <svg aria-hidden="true"><use href="#i-vscode" /></svg>
+      </a>
+      <div class="titlebar__center">
+        <button class="nav-button" type="button" title="后退" aria-label="后退">
+          <svg class="icon" aria-hidden="true"><use href="#i-chevron-left" /></svg>
+        </button>
+        <button class="nav-button" type="button" title="前进" aria-label="前进">
+          <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+        </button>
+        <button class="command-center" type="button" title="快速打开">
+          <svg class="icon" aria-hidden="true"><use href="#i-search" /></svg>
+          <span>工作区</span>
+        </button>
+      </div>
+      <div class="titlebar__actions">
+        <button class="titlebar-button" type="button" title="自定义布局" aria-label="自定义布局">
+          <svg class="icon" aria-hidden="true"><use href="#i-layout-customize" /></svg>
+        </button>
+        <button class="titlebar-button is-active" type="button" title="切换主侧边栏" aria-label="切换主侧边栏">
+          <svg class="icon" aria-hidden="true"><use href="#i-layout-sidebar" /></svg>
+        </button>
+        <button class="titlebar-button" type="button" title="切换面板" aria-label="切换面板">
+          <svg class="icon" aria-hidden="true"><use href="#i-layout-panel" /></svg>
+        </button>
+        <button class="titlebar-button" type="button" title="切换辅助侧边栏" aria-label="切换辅助侧边栏">
+          <svg class="icon" aria-hidden="true"><use href="#i-layout-split" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="workbench">
+      <!-- ============ 活动栏（功能选择区） ============ -->
+      <nav class="activity-bar" id="activityBar" aria-label="活动栏">
+        <button class="activity-item activity-item--menu" type="button" title="菜单" aria-label="菜单">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu" /></svg>
+        </button>
+        <button class="activity-item is-active" type="button" data-view="explorer" title="资源管理器 (Ctrl+Shift+E)" aria-label="资源管理器">
+          <svg class="icon" aria-hidden="true"><use href="#i-files" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="search" title="搜索 (Ctrl+Shift+F)" aria-label="搜索">
+          <svg class="icon" aria-hidden="true"><use href="#i-search" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="source-control" title="源代码管理 (Ctrl+Shift+G)" aria-label="源代码管理">
+          <svg class="icon" aria-hidden="true"><use href="#i-source-control" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="run" title="运行和调试 (Ctrl+Shift+D)" aria-label="运行和调试">
+          <svg class="icon" aria-hidden="true"><use href="#i-run" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="remote" title="远程资源管理器" aria-label="远程资源管理器">
+          <svg class="icon" aria-hidden="true"><use href="#i-remote" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="extensions" title="扩展 (Ctrl+Shift+X)" aria-label="扩展">
+          <svg class="icon" aria-hidden="true"><use href="#i-extensions" /></svg>
+        </button>
+
+        <div class="activity-bar__spacer"></div>
+
+        <button class="activity-item" type="button" data-view="account" title="账户" aria-label="账户">
+          <svg class="icon" aria-hidden="true"><use href="#i-account" /></svg>
+        </button>
+        <button class="activity-item" type="button" data-view="settings" title="管理" aria-label="管理">
+          <svg class="icon" aria-hidden="true"><use href="#i-settings" /></svg>
+        </button>
+      </nav>
+
+      <!-- ============ 侧边栏（功能展示区） ============ -->
+      <aside class="sidebar" id="sidebar" aria-label="侧边栏">
+        <div class="sidebar__header">
+          <h2 class="sidebar__title" id="sidebarTitle">资源管理器</h2>
+          <button class="icon-button" type="button" title="其他操作..." aria-label="其他操作">
+            <svg class="icon" aria-hidden="true"><use href="#i-more" /></svg>
+          </button>
+        </div>
+
+        <div class="sidebar__body" id="sidebarBody">
+          <!-- 资源管理器：文件树（Level 1） -->
+          <section class="panel is-active" data-panel="explorer" aria-label="资源管理器">
+            <div class="explorer" id="explorer">
+              <div class="explorer__toolbar">
+                <button class="button" type="button" id="openFolderButton">打开文件夹</button>
+                <span class="explorer__spacer"></span>
+                <button class="icon-button" type="button" id="refreshExplorer" title="刷新" aria-label="刷新">
+                  <svg class="icon" aria-hidden="true"><use href="#i-refresh" /></svg>
+                </button>
+                <button class="icon-button" type="button" id="collapseExplorer" title="全部折叠" aria-label="全部折叠">
+                  <svg class="icon" aria-hidden="true"><use href="#i-collapse-all" /></svg>
+                </button>
+              </div>
+              <!-- 工作区来源提示：内置示例 / 本地文件夹 -->
+              <div class="explorer__hint" id="explorerHint"></div>
+              <div class="tree" id="fileTree" role="tree" aria-label="文件树"></div>
+            </div>
+            <!-- 没有工作区时的空状态（正常流程下不会出现） -->
+            <div class="welcome-view" id="explorerEmpty" hidden>
+              <p class="welcome-view__message">尚未打开文件夹。</p>
+              <button class="button" type="button" id="welcomeOpenFolder">打开文件夹</button>
+              <button class="button" type="button">打开最近的文件</button>
+              <p class="welcome-view__message">若要连接到启用了远程隧道访问的计算机或了解如何执行此操作，请单击此处:</p>
+              <button class="button" type="button">连接到隧道...</button>
+              <p class="welcome-view__message">无需克隆即可打开远程存储库或拉取请求。</p>
+              <button class="button" type="button">打开远程存储库</button>
+            </div>
+          </section>
+
+          <!-- 搜索 -->
+          <section class="panel" data-panel="search" aria-label="搜索">
+            <div class="view-form">
+              <input class="input" type="text" placeholder="搜索" aria-label="搜索" />
+              <input class="input" type="text" placeholder="替换" aria-label="替换" />
+            </div>
+          </section>
+
+          <!-- 源代码管理 -->
+          <section class="panel" data-panel="source-control" aria-label="源代码管理">
+            <div class="view-form">
+              <button class="button" type="button">初始化仓库</button>
+            </div>
+            <p class="welcome-view__message">尚未打开任何源代码管理提供程序。</p>
+          </section>
+
+          <!-- 运行和调试 -->
+          <section class="panel" data-panel="run" aria-label="运行和调试">
+            <div class="view-form">
+              <button class="button" type="button">运行和调试</button>
+            </div>
+            <p class="welcome-view__message">若要自定义运行和调试，请创建一个 launch.json 文件。</p>
+          </section>
+
+          <!-- 远程资源管理器 -->
+          <section class="panel" data-panel="remote" aria-label="远程资源管理器">
+            <div class="view-form">
+              <button class="button" type="button">打开远程窗口...</button>
+            </div>
+          </section>
+
+          <!-- 扩展 -->
+          <section class="panel" data-panel="extensions" aria-label="扩展">
+            <div class="view-form">
+              <input class="input" type="text" placeholder="在市场中搜索扩展" aria-label="搜索扩展" />
+            </div>
+          </section>
+
+          <section class="panel" data-panel="account" aria-label="账户">
+            <p class="welcome-view__message">你尚未登录。登录后可同步设置。</p>
+          </section>
+          <section class="panel" data-panel="settings" aria-label="管理">
+            <p class="welcome-view__message">管理面板：设置、键盘快捷方式、命令面板。</p>
+          </section>
+        </div>
+
+        <div class="sidebar__bottom">
+          <button class="collapsed-section" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+            <span>大纲</span>
+          </button>
+          <button class="collapsed-section" type="button">
+            <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+            <span>时间线</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ============ 拖拽条 ============ -->
+      <div class="sash" id="sash" role="separator" aria-orientation="vertical" aria-label="拖动调整侧边栏宽度，双击恢复默认宽度" tabindex="0"></div>
+
+      <!-- ============ 编辑器区域 ============ -->
+      <main class="editor">
+        <div class="tabs" role="tablist" aria-label="编辑器标签">
+          <!-- 标签由 scripts/editorTabs.js 动态生成 -->
+          <div class="tabs__list" id="tabList" role="presentation"></div>
+          <div class="tabs__spacer"></div>
+          <button class="tab-action" type="button" title="拆分编辑器" aria-label="拆分编辑器">
+            <svg class="icon" aria-hidden="true"><use href="#i-split-editor" /></svg>
+          </button>
+          <button class="tab-action" type="button" title="更多操作..." aria-label="更多操作">
+            <svg class="icon" aria-hidden="true"><use href="#i-more" /></svg>
+          </button>
+        </div>
+
+        <div class="editor__content">
+          <!-- 欢迎页（没有打开文件时显示） -->
+          <div class="editor__view" id="welcomeView">
+          <div class="welcome">
+            <div class="welcome__header">
+              <h1 class="welcome__title">Visual Studio Code</h1>
+              <p class="welcome__subtitle">编辑进化</p>
+            </div>
+
+            <div class="welcome__column">
+              <h2 class="welcome__section">启动</h2>
+              <ul class="welcome__list">
+                <li><a class="welcome__link" href="#"><svg class="icon"><use href="#i-new-file" /></svg><span>新建文件...</span></a></li>
+                <li><a class="welcome__link" href="#"><svg class="icon"><use href="#i-file-open" /></svg><span>打开文件...</span></a></li>
+                <li><a class="welcome__link" href="#" data-action="open-folder"><svg class="icon"><use href="#i-folder-opened" /></svg><span>打开文件夹...</span></a></li>
+                <li><a class="welcome__link" href="#"><svg class="icon"><use href="#i-repo" /></svg><span>打开仓库...</span></a></li>
+                <li><a class="welcome__link" href="#"><svg class="icon"><use href="#i-tunnel" /></svg><span>打开隧道...</span></a></li>
+              </ul>
+
+              <h2 class="welcome__section">最近</h2>
+              <ul class="welcome__recent">
+                <li>
+                  <a class="welcome__recent-link" href="#"><span>node_modules</span><span class="welcome__recent-path">\Web\Astro\EatEat</span></a>
+                </li>
+                <li>
+                  <a class="welcome__recent-link" href="#"><span>Web</span><span class="welcome__recent-path">\</span></a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="welcome__column">
+              <h2 class="welcome__section">演练</h2>
+              <div class="cards">
+                <a class="card card--ribbon" href="#">
+                  <span class="card__ribbon"><svg class="icon" aria-hidden="true"><use href="#i-star" /></svg></span>
+                  <span class="card__text">
+                    <span class="card__title">面向 Web 的 VS Code 入门</span>
+                    <span class="card__description">自定义编辑器、了解基础知识并开始编码</span>
+                  </span>
+                </a>
+                <a class="card" href="#">
+                  <span class="card__icon"><svg class="icon" aria-hidden="true"><use href="#i-repo" /></svg></span>
+                  <span class="card__text">
+                    <span class="card__title">浏览和编辑存储库而无需克隆</span>
+                    <span class="badge">新建</span>
+                  </span>
+                </a>
+                <a class="card" href="#">
+                  <span class="card__icon card__icon--plain"><svg class="icon" aria-hidden="true"><use href="#i-lightbulb" /></svg></span>
+                  <span class="card__text">
+                    <span class="card__title">了解基础知识</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="welcome-footer">
+            <label class="checkbox">
+              <input class="checkbox__input" type="checkbox" checked />
+              <span class="checkbox__box"><svg class="icon" aria-hidden="true"><use href="#i-check" /></svg></span>
+              <span class="checkbox__label">启动时显示欢迎页</span>
+            </label>
+            <p class="welcome-footer__note">Code 收集使用情况数据。阅读我们的 <a href="#">隐私声明</a> 并了解如何 <a href="#">选择退出</a>。</p>
+          </div>
+          </div>
+
+          <!-- 文件内容预览（Level 1：只读） -->
+          <div class="editor__view editor__view--code" id="codeView" hidden>
+            <div class="code-view__header">
+              <span class="code-view__path" id="codePath"></span>
+              <span class="code-view__note" id="codeNote"></span>
+            </div>
+            <div class="code-view__body" id="codeBody"></div>
+          </div>
+
+          <div class="editor-floats">
+            <button class="float-button" type="button" title="自定义布局" aria-label="自定义布局">
+              <svg class="icon" aria-hidden="true"><use href="#i-layout-customize" /></svg>
+            </button>
+            <button class="float-button float-button--copilot" type="button" title="Copilot" aria-label="Copilot">
+              <svg class="copilot-mark" aria-hidden="true"><use href="#i-copilot" /></svg>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ============ 状态栏 ============ -->
+    <footer class="statusbar">
+      <div class="statusbar__group">
+        <button class="statusbar__remote" type="button" title="打开远程窗口" aria-label="打开远程窗口">
+          <svg class="icon" aria-hidden="true"><use href="#i-remote-indicator" /></svg>
+        </button>
+        <button class="statusbar__item" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-error" /></svg>0
+        </button>
+        <button class="statusbar__item" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-warning" /></svg>0
+        </button>
+      </div>
+      <div class="statusbar__group">
+        <button class="statusbar__item" type="button" id="statusLanguage"></button>
+        <button class="statusbar__item" type="button" id="statusLines"></button>
+        <button class="statusbar__item" type="button">UTF-8</button>
+        <button class="statusbar__item" type="button">LF</button>
+        <button class="statusbar__item" type="button">布局: US</button>
+        <button class="statusbar__item" type="button" title="通知" aria-label="通知">
+          <svg class="icon" aria-hidden="true"><use href="#i-bell" /></svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <!--
+    浏览器限制：file:// 页面不允许加载 ES Module（会被 CORS 拦下）。
+    为了让这个页面双击就能用，这里用普通脚本 + defer 按顺序加载。
+  -->
+  <script defer src="scripts/sidebar.js"></script>
+  <script defer src="scripts/activityBar.js"></script>
+  <script defer src="scripts/workspace.js"></script>
+  <script defer src="scripts/explorer.js"></script>
+  <script defer src="scripts/editorTabs.js"></script>
+  <script defer src="scripts/main.js"></script>
+</body>
+</html>

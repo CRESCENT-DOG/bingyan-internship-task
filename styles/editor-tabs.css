@@ -1,0 +1,115 @@
+/* editor-tabs.css —— 标签页列表 + 文件内容预览（T4 Level 1） */
+
+/* ================= 标签页列表 ================= */
+.tabs__list {
+  display: flex;
+  align-items: stretch;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.tabs__list::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tabs__list::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+}
+
+.tabs__list .tab {
+  min-width: 120px;
+  max-width: 220px;
+  cursor: pointer;
+}
+
+/* 标签图标按文件类型上色，和资源管理器保持一致 */
+.tab__icon--vscode { color: #0078d4; }
+.tab__icon--js { color: #e2c08d; }
+.tab__icon--ts { color: #519aba; }
+.tab__icon--json { color: #e2c08d; }
+.tab__icon--css { color: #42a5f5; }
+.tab__icon--html { color: #e44d26; }
+.tab__icon--md { color: #519aba; }
+.tab__icon--svg { color: #ffb13b; }
+.tab__icon--file { color: var(--fg-muted); }
+
+/* ================= 编辑器内容区 ================= */
+.editor__view {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
+.editor__view[hidden] {
+  display: none;
+}
+
+.editor__view--code {
+  flex: 1 1 auto;
+}
+
+/* 只读预览的标题条：路径 + 说明 */
+.code-view__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  height: 28px;
+  padding: 0 14px;
+  background-color: var(--bg-editor);
+  border-bottom: 1px solid var(--border);
+  color: var(--fg-muted);
+  font-size: 12px;
+}
+
+.code-view__path {
+  overflow: hidden;
+  color: var(--fg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.code-view__note {
+  flex: none;
+  margin-left: auto;
+}
+
+/* 正文：等宽字体 + 行号槽 */
+.code-view__body {
+  flex: 1 1 auto;
+  padding: 8px 0 18px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  tab-size: 2;
+}
+
+.code-line {
+  display: flex;
+}
+
+.code-line:hover {
+  background-color: #ffffff08;
+}
+
+.code-line__number {
+  flex: none;
+  width: 58px;
+  padding-right: 16px;
+  color: #6e7681;
+  text-align: right;
+  user-select: none;
+}
+
+.code-line__text {
+  color: var(--fg);
+  white-space: pre;
+  /* 长行不换行，横向滚动交给外层内容区 */
+}

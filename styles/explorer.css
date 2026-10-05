@@ -1,0 +1,119 @@
+/* explorer.css —— 资源管理器：文件树（T4 Level 1） */
+
+.explorer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 打开文件夹 / 刷新 / 全部折叠 */
+.explorer__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 6px;
+}
+
+.explorer__toolbar .button {
+  height: 24px;
+  margin-bottom: 0;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.explorer__spacer {
+  flex: 1 1 auto;
+}
+
+.explorer__hint {
+  padding: 0 10px 6px;
+  color: var(--fg-muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.explorer__hint:empty {
+  display: none;
+}
+
+/* ================= 文件树 ================= */
+.tree {
+  padding: 2px 0 14px;
+  font-size: 13px;
+  user-select: none;
+}
+
+.tree__row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  /* 缩进按层级递增，和 VS Code 一样用「每级 12px」 */
+  padding-left: calc(6px + var(--depth, 0) * 12px);
+  padding-right: 6px;
+  color: var(--fg);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tree__row:hover {
+  background-color: var(--hover);
+}
+
+.tree__row.is-selected {
+  /* list.activeSelectionBackground */
+  background-color: #04395e;
+  color: #ffffff;
+}
+
+.tree__row:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+}
+
+.tree__row--message {
+  color: var(--fg-muted);
+  font-size: 12px;
+  font-style: italic;
+  cursor: default;
+}
+
+.tree__row--message:hover {
+  background-color: transparent;
+}
+
+.tree__chevron {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  color: var(--fg);
+}
+
+/* 文件行没有折叠箭头，用等宽占位保证图标对齐 */
+.tree__chevron--spacer {
+  display: inline-block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.tree__icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+.tree__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 图标配色：模仿 VS Code 默认的 Seti 图标主题 */
+.tree__icon--folder { color: #dcb67a; }
+.tree__icon--js { color: #e2c08d; }
+.tree__icon--ts { color: #519aba; }
+.tree__icon--json { color: #e2c08d; }
+.tree__icon--css { color: #42a5f5; }
+.tree__icon--html { color: #e44d26; }
+.tree__icon--md { color: #519aba; }
+.tree__icon--svg { color: #ffb13b; }
+.tree__icon--file { color: var(--fg-muted); }
